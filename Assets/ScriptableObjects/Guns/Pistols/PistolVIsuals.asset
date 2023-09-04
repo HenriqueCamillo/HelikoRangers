@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a19d2b38a8becb42b6b1585e303b2ce, type: 3}
   m_Name: PistolVIsuals
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  muzzleOffset: {x: 0.7, y: 0.1}
+  sprite: {fileID: 21300000, guid: bf4de670a38b4b845a8d12f7900c37f3, type: 3}
+  muzzleOffset: {x: 0.225, y: 0.175}

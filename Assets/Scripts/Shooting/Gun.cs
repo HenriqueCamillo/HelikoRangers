@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
     private bool isInCooldown;
     private bool isTriggerPressed;
 
+    public int AmmoInClip;
+
     public LayerMask DamageLayers;
 
 
@@ -15,19 +17,17 @@ public class Gun : MonoBehaviour
         get => template;
         set 
         {
-            if (template == value)
-                return;
-            
             template = value;
-            spriteRenderer.sprite = template.Sprite;
+            spriteRenderer.sprite = template ? template.Sprite : null;
         }
     }
 
     public bool IsInCooldown => isInCooldown;
 
-    private void Start()
+    private void Awake()
     {
         Template = Template;
+        AmmoInClip = Template.AmmoClipCapacity;
     }
 
     public void StartShooting()
@@ -49,7 +49,14 @@ public class Gun : MonoBehaviour
         if (IsInCooldown)
             return;
 
+        if (AmmoInClip < Template.ShotPattern.Bullets)
+    	{
+            // TODO: Invoke reload event
+            return;
+        }
+
         Template.ShotPattern.SpawnBullets(Template.BulletTemplate, GetMuzzlePosition(), this.transform.rotation, Template.AmmoType, DamageLayers);
+        AmmoInClip -= Template.ShotPattern.Bullets;
 
         float cooldown = Template.ShotPattern.Cooldown;
         if (cooldown > 0.0f)

@@ -39,9 +39,17 @@ public class Bullet : MonoBehaviour
         if ((otherLayerMaskValue & damageLayers.value) != 0)
         {
             Hitbox hitbox = other.gameObject.GetComponent<Hitbox>();
-            hitbox.ApplyDamange(template.Damage);
+            if (hitbox == null)
+                return;
         
-            Destroy(this.gameObject);
+            hitbox.ApplyDamange(template.Damage);
+            Explode();
         }
+    }
+
+    private void Explode()
+    {
+        // TODO: Animation
+        Destroy(this.gameObject);
     }
 }
