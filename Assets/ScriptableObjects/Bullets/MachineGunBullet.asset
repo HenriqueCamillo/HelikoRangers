@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06bcdb3caf0db4f42ab156e3fa07c3f7, type: 3}
-  m_Name: PistolBullet
+  m_Name: MachineGunBullet
   m_EditorClassIdentifier: 
   damage: 5
   speed: 10
-  size: 0.7
-  lifetime: 1
-  prefab: {fileID: 2751615286636404418, guid: 74e522f112e62054b88d151e5ef2199f, type: 3}
+  size: 1.2
+  lifetime: 2
+  prefab: {fileID: 2450375676510770412, guid: 95a4589853de1b942b8d9921f04fde91, type: 3}

@@ -6,20 +6,20 @@ public class ProximityInteractable : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.GetComponent<Player>();
-        if (player == null)
+        Interactor interactor = other.GetComponent<Interactor>();
+        if (interactor == null)
             return;
 
-        player.AddPossibleInteractable(this, this.gameObject);
+        interactor.AddPossibleInteractable(this, this.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Player player = other.GetComponent<Player>();
-        if (player == null)
+        Interactor interactor = other.GetComponent<Interactor>();
+        if (interactor == null)
             return;
 
-        player.RemovePossibleInteractable(this);
+        interactor.RemovePossibleInteractable(this);
         SetHintVisible(false);
     }
 
@@ -33,7 +33,7 @@ public class ProximityInteractable : MonoBehaviour, IInteractable
         return priority;
     }
 
-    public virtual void Interact(GameObject interactor)
+    public virtual void Interact(Interactor interaction)
     {
 
     }

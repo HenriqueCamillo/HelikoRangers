@@ -16,6 +16,7 @@ public class GunTemplate : ScriptableObject
     [SerializeField] private ShotPattern shotPattern;
     [SerializeField] private AmmoType ammoType;
     [SerializeField] private int ammoClipCapacity;
+    [SerializeField] private float reloadTime;
     [SerializeField] private bool automaticFiringMode;
 
     public Vector2 MuzzleOffset => visuals.MuzzleOffset;
@@ -24,5 +25,6 @@ public class GunTemplate : ScriptableObject
     public ShotPattern ShotPattern => shotPattern;
     public AmmoType AmmoType => ammoType;
     public int AmmoClipCapacity => ammoClipCapacity;
+    public float ReloadTime => reloadTime;
     public bool AutomaticFiringMode => automaticFiringMode;
 }

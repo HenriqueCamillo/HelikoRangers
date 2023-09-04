@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: MachineGun
   m_EditorClassIdentifier: 
   visuals: {fileID: 11400000, guid: 0905a72776d21534db86976254cd0d5f, type: 2}
-  bulletTemplate: {fileID: 11400000, guid: 0f28ded15634e1f48954941e73033948, type: 2}
+  bulletTemplate: {fileID: 11400000, guid: 2ad6d2b588eed4a4487eaf330f38e70c, type: 2}
   shotPattern: {fileID: 11400000, guid: 30204ca74c6d3594b94c37673cb5d263, type: 2}
   ammoType: 2
   ammoClipCapacity: 20
+  reloadTime: 1.5
   automaticFiringMode: 1

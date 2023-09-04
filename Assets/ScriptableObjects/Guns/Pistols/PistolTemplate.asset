@@ -17,4 +17,5 @@ MonoBehaviour:
   shotPattern: {fileID: 11400000, guid: 25387963b20d5654d9049fafd076582b, type: 2}
   ammoType: 0
   ammoClipCapacity: 9
+  reloadTime: 0.5
   automaticFiringMode: 0

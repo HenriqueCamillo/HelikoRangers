@@ -27,10 +27,11 @@ public class GunCollectable : ProximityInteractable
         AmmoInClip = GunTemplate.AmmoClipCapacity;
     }
 
-    public override void Interact(GameObject interactor)
+    public override void Interact(Interactor interactor)
     {
-        Player player = interactor.GetComponent<Player>();
-        player.PickUpDroppedGun(this);
+        GunCharacter gunCharacter = interactor.GetComponent<GunCharacter>();
+        if (gunCharacter != null)
+            gunCharacter.PickUpDroppedGun(this);
     }
 
     public override void SetHintVisible(bool visible)

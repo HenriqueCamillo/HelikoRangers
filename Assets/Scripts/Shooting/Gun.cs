@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Gun : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Gun : MonoBehaviour
     public int AmmoInClip;
 
     public LayerMask DamageLayers;
+
+    public event Action OnInsufficientAmmo;
 
 
     public GunTemplate Template
@@ -26,12 +29,17 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
-        Template = Template;
-        AmmoInClip = Template.AmmoClipCapacity;
+        Template = template;
+
+        if (Template != null)
+            AmmoInClip = Template.AmmoClipCapacity;
     }
 
     public void StartShooting()
     {
+        if (Template == null)
+            return;
+        
         if (isTriggerPressed)
             return;
 
@@ -51,7 +59,7 @@ public class Gun : MonoBehaviour
 
         if (AmmoInClip < Template.ShotPattern.Bullets)
     	{
-            // TODO: Invoke reload event
+            OnInsufficientAmmo?.Invoke();
             return;
         }
 
@@ -64,6 +72,14 @@ public class Gun : MonoBehaviour
             isInCooldown = true;
             Invoke(nameof(FinishCooldown), cooldown);
         }
+    }
+
+    public void AddAmmo(int value)
+    {
+        if (Template == null)
+            return;
+            
+        AmmoInClip = Mathf.Clamp(AmmoInClip + value, 0, Template.AmmoClipCapacity);
     }
 
     private Vector3 GetMuzzlePosition()
@@ -83,5 +99,10 @@ public class Gun : MonoBehaviour
     public void FlipSprite(bool aimingLeft)
     {
         spriteRenderer.flipY = aimingLeft;
+    }
+
+    public void SetColor(Color color)
+    {
+        spriteRenderer.color = color;
     }
 }

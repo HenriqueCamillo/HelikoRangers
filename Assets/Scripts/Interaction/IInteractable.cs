@@ -1,8 +1,6 @@
-using UnityEngine;
-
 public interface IInteractable
 {
-    void Interact(GameObject interactor);
+    void Interact(Interactor interactor);
     int GetPriority();
     bool CanBeInteractedWith();
     void SetHintVisible(bool visible);

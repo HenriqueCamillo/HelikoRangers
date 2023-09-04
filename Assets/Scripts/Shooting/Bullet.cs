@@ -6,7 +6,19 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private BulletTemplate template;
     [SerializeField] private Rigidbody2D rigidBody;
-   private LayerMask damageLayers;
+    private LayerMask damageLayers;
+
+    private BulletTemplate Template
+    {
+        get => template;
+        set
+        {
+            template = value;
+
+            if (template != null)
+                this.transform.localScale = Vector3.one * template.Size;
+        }
+    }
 
     private void Awake()
     {
@@ -16,7 +28,8 @@ public class Bullet : MonoBehaviour
 
     public void Initalize(BulletTemplate template, AmmoType ammoType, LayerMask damageLayers)
     {
-        this.template = template;
+        // TODO: set size
+        Template = template;
         this.damageLayers = damageLayers;
         
         rigidBody.velocity = this.transform.right * template.Speed;
