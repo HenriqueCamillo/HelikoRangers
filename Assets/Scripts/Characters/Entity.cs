@@ -7,6 +7,10 @@ public class Entity : MonoBehaviour
     [SerializeField] private float life;
     [SerializeField] private float maxLife;
 
+    // TODO: better way to pass maxValue to life bars
+    public delegate void OnLifeUpdatedHandler(float value, float maxValue);
+    public event OnLifeUpdatedHandler OnLifeUpdated;
+
     public float Life 
     {
         get => life;
@@ -16,22 +20,16 @@ public class Entity : MonoBehaviour
                 return;
 
             life = Mathf.Clamp(value, 0.0f, maxLife);
-
-            UpdateLifeBar();
+            OnLifeUpdated?.Invoke(life, maxLife);
 
             if (life == 0.0f)
                 Die();
         }
-
     }
 
     private void Awake()
     {
         Life = maxLife;
-    }
-    protected virtual void UpdateLifeBar()
-    {
-
     }
 
     protected virtual void Die()

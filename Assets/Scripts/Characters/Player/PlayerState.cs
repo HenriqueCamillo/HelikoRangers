@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour
@@ -7,6 +6,11 @@ public class PlayerState : MonoBehaviour
     private Dictionary<AmmoType, int> ammo = new Dictionary<AmmoType, int>();
     private List<GunTemplate> guns = new List<GunTemplate>();
     private int selectedGun;
+
+    // TODO: better way to pass maxValue to life bars
+    public delegate void OnAmmoUpdatedHandler(AmmoType type, int value, int maxValue);
+    public event OnAmmoUpdatedHandler OnAmmoUpdated;
+
     public int SelectedGun
     {
         get => selectedGun;
@@ -23,8 +27,8 @@ public class PlayerState : MonoBehaviour
     public GunTemplate GunNotBeingUsed => guns.Count > 1 ? guns[(selectedGun + 1) % guns.Count] : null;
 
     // TODO: Move to config file
-    [SerializeField] private int defaultAmmo = 50;
-    [SerializeField] private int maxAmmo = 300;
+    public int defaultAmmo = 50;
+    public int maxAmmo = 100;
 
     private void Awake()
     {
@@ -33,6 +37,10 @@ public class PlayerState : MonoBehaviour
         ammo.Add(AmmoType.Heavy, defaultAmmo);
         ammo.Add(AmmoType.Medium, defaultAmmo);
         ammo.Add(AmmoType.Light, defaultAmmo);
+        
+        foreach (var ammoInfo in ammo)
+            OnAmmoUpdated?.Invoke(ammoInfo.Key, ammoInfo.Value, maxAmmo);
+
 
         guns.Clear();
         guns.Add(null);
@@ -47,6 +55,7 @@ public class PlayerState : MonoBehaviour
     public void SetAmmo(AmmoType ammoType, int value)
     {
         ammo[ammoType] = Mathf.Clamp(value, 0, maxAmmo);
+        OnAmmoUpdated?.Invoke(ammoType, value, maxAmmo);
     }
 
     public void AddGun(GunTemplate gunTemplate)

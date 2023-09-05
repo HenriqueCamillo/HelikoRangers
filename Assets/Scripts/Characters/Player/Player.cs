@@ -49,7 +49,7 @@ public class Player : GunCharacter
         
         if (context.performed)
         {
-            if (isReloading)
+            if (isReloading && gun.AmmoInClip > 0)
                 CancelReload();
                 
             gun.StartShooting();

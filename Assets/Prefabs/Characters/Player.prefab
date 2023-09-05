@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa479dfddd058443aadad4bc6d8d894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Guns: []
-  SelectedGun: 0
+  defaultAmmo: 50
+  maxAmmo: 100
 --- !u!114 &426345368994115979
 MonoBehaviour:
   m_ObjectHideFlags: 0
