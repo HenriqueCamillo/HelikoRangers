@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GunCollectable : ProximityInteractable 
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GunTemplate gunTemplate;
     public int AmmoInClip;
     public GunTemplate GunTemplate
@@ -18,10 +17,9 @@ public class GunCollectable : ProximityInteractable
         }
     }
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        base.Awake();
 
         GunTemplate = gunTemplate;
         AmmoInClip = GunTemplate.AmmoClipCapacity;
@@ -32,10 +30,5 @@ public class GunCollectable : ProximityInteractable
         GunCharacter gunCharacter = interactor.GetComponent<GunCharacter>();
         if (gunCharacter != null)
             gunCharacter.PickUpDroppedGun(this);
-    }
-
-    public override void SetHintVisible(bool visible)
-    {
-        spriteRenderer.color = visible ? Color.cyan : Color.white;
     }
 }

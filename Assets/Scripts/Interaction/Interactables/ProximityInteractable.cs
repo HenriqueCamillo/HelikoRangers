@@ -3,6 +3,13 @@ using UnityEngine;
 public class ProximityInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private int priority;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+
+    protected virtual void Awake()
+    {
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,7 +47,7 @@ public class ProximityInteractable : MonoBehaviour, IInteractable
 
     public virtual void SetHintVisible(bool visible)
     {
-
+        spriteRenderer.color = visible ? Color.cyan : Color.white;
     }
 
 }
