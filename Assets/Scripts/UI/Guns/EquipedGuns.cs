@@ -38,7 +38,16 @@ public class EquipedGuns : MonoBehaviour
 
     private void UpdateBullets(int ammoInClip, int capacity)
     {
-        bulletsInClip.gameObject.SetActive(ammoInClip <= capacity);
+        if (playerGun.Template == null)
+        {
+            bulletsInClip.gameObject.SetActive(false);
+            return;
+        }
+
+        ammoInClip /= playerGun.Template.ShotPattern.ResourceCost;
+        capacity /= playerGun.Template.ShotPattern.ResourceCost;
+
         bulletsInClip.SetText($"{ammoInClip}/{capacity}");
+        bulletsInClip.gameObject.SetActive(true);
     }
 }

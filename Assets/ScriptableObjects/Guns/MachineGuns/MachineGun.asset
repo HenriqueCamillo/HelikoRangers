@@ -18,4 +18,5 @@ MonoBehaviour:
   ammoType: 2
   ammoClipCapacity: 20
   reloadTime: 1.5
+  cooldown: 0.1
   automaticFiringMode: 1

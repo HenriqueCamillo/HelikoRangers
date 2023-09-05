@@ -214,12 +214,16 @@ PrefabInstance:
       value: Light Ammo Bar
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.g
-      value: 0.69803923
+      value: 0.63529414
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.r
-      value: 0.48235297
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -369,8 +373,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
+      propertyPath: color.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.r
-      value: 1
+      value: 0.48235294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -515,11 +523,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.b
-      value: 0.12941177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.g
-      value: 0.23529413
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.r
@@ -668,15 +676,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.b
-      value: 1
+      value: 0.12941177
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.g
-      value: 0.63529414
+      value: 0.23529412
       objectReference: {fileID: 0}
     - target: {fileID: 9213374013594346438, guid: b614f3d8dbacb614fb8e260c4847412a, type: 3}
       propertyPath: color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

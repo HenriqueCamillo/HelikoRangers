@@ -48,9 +48,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4217219471451357217, guid: ac6f6e2ad437d3747b5a2169ecfd7043, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 601d4dbafbee98d4dad8b44072cd5e51, type: 3}
     - target: {fileID: 8597083171063977540, guid: ac6f6e2ad437d3747b5a2169ecfd7043, type: 3}
       propertyPath: m_Name
-      value: AmmoChest
+      value: LightAmmoChest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

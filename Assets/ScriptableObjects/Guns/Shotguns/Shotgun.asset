@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6b02d6fa50b724c94550ac6ca02d34, type: 3}
-  m_Name: PistolTemplate
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
-  visuals: {fileID: 11400000, guid: de3dec14ea2a83c4a8cac8dda17e9e8b, type: 2}
-  bulletTemplate: {fileID: 11400000, guid: 0f28ded15634e1f48954941e73033948, type: 2}
-  shotPattern: {fileID: 11400000, guid: 25387963b20d5654d9049fafd076582b, type: 2}
-  ammoType: 0
-  ammoClipCapacity: 9
-  reloadTime: 0.5
-  cooldown: 0.2
+  visuals: {fileID: 11400000, guid: 36395f09255ec614ba15271357a40f2f, type: 2}
+  bulletTemplate: {fileID: 11400000, guid: 2e726ccba3d26e546bb72bd32cfa62aa, type: 2}
+  shotPattern: {fileID: 11400000, guid: 629050a6ad4262b469fede642dedcad9, type: 2}
+  ammoType: 1
+  ammoClipCapacity: 30
+  reloadTime: 1
+  cooldown: 0.5
   automaticFiringMode: 0

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "GunVisuals", menuName = "HelikoRangers/GunVisuals", order = 0)]
+[CreateAssetMenu(fileName = "GunVisuals", menuName = "HelikoRangers/Guns/Visuals", order = 0)]
 public class GunVisuals : ScriptableObject
 {
     [SerializeField] private Sprite sprite;

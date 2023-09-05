@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 3981055089524027580, guid: e97234eb33043574eb5420b3fc4bc3b2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -173365692, guid: 6e2369bac07d9984a9d0d34b1796fb3d, type: 3}
+      objectReference: {fileID: 1442224322, guid: 6e2369bac07d9984a9d0d34b1796fb3d, type: 3}
     - target: {fileID: 5585304740903312084, guid: e97234eb33043574eb5420b3fc4bc3b2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.34375

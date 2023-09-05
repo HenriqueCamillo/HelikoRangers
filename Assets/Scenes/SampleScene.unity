@@ -221,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 6622937285156471389, guid: 4674562b5fcdc0042b2c9bad731fab2f, type: 3}
       propertyPath: gunTemplate
       value: 
-      objectReference: {fileID: 11400000, guid: 40684586a935b504ea19a7ae8d46af12, type: 2}
+      objectReference: {fileID: 11400000, guid: dd5db4e9f374cec409effbd232154e7a, type: 2}
     - target: {fileID: 6860168161686265641, guid: 4674562b5fcdc0042b2c9bad731fab2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.53

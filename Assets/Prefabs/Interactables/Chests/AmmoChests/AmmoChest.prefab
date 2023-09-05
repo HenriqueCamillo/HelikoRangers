@@ -146,4 +146,4 @@ MonoBehaviour:
   priority: 0
   spriteRenderer: {fileID: 4217219471451357217}
   ammoType: 0
-  ammoQuantity: 100
+  ammoQuantity: 50

@@ -76,13 +76,13 @@ public class Gun : MonoBehaviour
         if (IsInCooldown)
             return;
 
-        if (AmmoInClip < Template.ShotPattern.Bullets)
+        if (AmmoInClip < Template.ShotPattern.ResourceCost)
     	    return;
 
         Template.ShotPattern.SpawnBullets(Template.BulletTemplate, GetMuzzlePosition(), this.transform.rotation, Template.AmmoType, DamageLayers);
-        AmmoInClip -= Template.ShotPattern.Bullets;
+        AmmoInClip -= Template.ShotPattern.ResourceCost;
 
-        float cooldown = Template.ShotPattern.Cooldown;
+        float cooldown = Template.Cooldown;
         if (cooldown > 0.0f)
         {
             isInCooldown = true;
@@ -101,7 +101,7 @@ public class Gun : MonoBehaviour
     {
         isInCooldown = false;
 
-        if (AmmoInClip < Template.ShotPattern.Bullets)
+        if (AmmoInClip < Template.ShotPattern.ResourceCost)
         {
             OnEmptyAmmoClip?.Invoke();
             return;

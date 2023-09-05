@@ -8,7 +8,7 @@ public enum AmmoType
     Heavy
 }
 
-[CreateAssetMenu(fileName = "GunTemplate", menuName = "HelikoRangers/GunTemplate", order = 0)]
+[CreateAssetMenu(fileName = "GunTemplate", menuName = "HelikoRangers/Guns/GunTemplate", order = 0)]
 public class GunTemplate : ScriptableObject
 {
     [SerializeField] private GunVisuals visuals;
@@ -17,6 +17,7 @@ public class GunTemplate : ScriptableObject
     [SerializeField] private AmmoType ammoType;
     [SerializeField] private int ammoClipCapacity;
     [SerializeField] private float reloadTime;
+    [SerializeField] protected float cooldown;
     [SerializeField] private bool automaticFiringMode;
 
     public Vector2 MuzzleOffset => visuals.MuzzleOffset;
@@ -26,5 +27,6 @@ public class GunTemplate : ScriptableObject
     public AmmoType AmmoType => ammoType;
     public int AmmoClipCapacity => ammoClipCapacity;
     public float ReloadTime => reloadTime;
+    public float Cooldown => cooldown;
     public bool AutomaticFiringMode => automaticFiringMode;
 }

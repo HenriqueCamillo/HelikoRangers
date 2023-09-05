@@ -4,16 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "ShotPattern", menuName = "HelikoRangers/ShotPattern", order = 0)]
+[CreateAssetMenu(fileName = "DefaultShotPattern", menuName = "HelikoRangers/ShotPatterns/Default", order = 0)]
 public class ShotPattern : ScriptableObject
 {
-    [SerializeField] private int bullets = 1;
-    [SerializeField] private float maxDispersionAngle = 0.0f;
-    [SerializeField] private float cooldown = 0.0f;
+    [SerializeField] protected int resourceCost = 1;
+    [SerializeField] protected int bullets = 1;
+    [SerializeField] protected float maxDispersionAngle = 0.0f;
 
+    public int ResourceCost => resourceCost;
     public int Bullets => bullets;
     public float MaxDispersionAngle => maxDispersionAngle;
-    public float Cooldown => cooldown;
 
     public virtual void SpawnBullets(BulletTemplate bulletTemplate, Vector3 spawnPosition, Quaternion rotation, AmmoType ammoType, LayerMask damageLayers)
     {

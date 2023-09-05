@@ -49,7 +49,7 @@ public class Player : GunCharacter
         
         if (context.performed)
         {
-            if (isReloading && gun.AmmoInClip > 0)
+            if (isReloading && gun.AmmoInClip > gun.Template.ShotPattern.ResourceCost)
                 CancelReload();
                 
             gun.StartShooting();
@@ -97,6 +97,9 @@ public class Player : GunCharacter
 
     public void SwitchGun(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+            return;
+
         if (playerState.GunNotBeingUsed == null)
             return;
 
@@ -135,8 +138,8 @@ public class Player : GunCharacter
 
         if (!pickingSecondGun)
         {
-            base.PickUpDroppedGun(gunCollectable);
             playerState.ReplaceCurrentGun(gunCollectable.GunTemplate);
+            base.PickUpDroppedGun(gunCollectable);
             return;
         }
 

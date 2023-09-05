@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AlternatingShot", menuName = "HelikoRangers/AlternatingShot", order = 0)]
+[CreateAssetMenu(fileName = "AlternatingShotPattern", menuName = "HelikoRangers/ShotPatterns/Alternating", order = 0)]
 public class AlternatingShotPattern : ShotPattern
 {
     [SerializeField] private float offset;
