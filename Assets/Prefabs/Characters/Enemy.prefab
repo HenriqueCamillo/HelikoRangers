@@ -289,9 +289,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 15
   maxLife: 15
-  spriteRenderer: {fileID: 0}
-  rigidBody: {fileID: 0}
-  animator: {fileID: 0}
+  spriteRenderer: {fileID: 1531937253193205983}
+  rigidBody: {fileID: 3675722894788050924}
+  animator: {fileID: 2175890063649730901}
   interactor: {fileID: 1659715697063977501}
   gun: {fileID: 5065279936010484491}
   speed: 0

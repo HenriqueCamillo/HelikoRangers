@@ -50,6 +50,8 @@ public class GunCharacter : Entity
         if (interactor == null)
             interactor.GetComponent<Interactor>();
 
+        IsLookingLeft = isLookingLeft;
+
         gun.DamageLayers = damageLayers;
 
         gun.OnEmptyAmmoClip += TryToReload;
