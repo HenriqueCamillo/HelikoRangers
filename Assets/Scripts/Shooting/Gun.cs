@@ -8,12 +8,30 @@ public class Gun : MonoBehaviour
     private bool isInCooldown;
     private bool isTriggerPressed;
 
-    public int AmmoInClip;
-
+    private int ammoInClip;
     public LayerMask DamageLayers;
 
-    public event Action OnInsufficientAmmo;
+    public event Action OnEmptyAmmoClip;
+    public delegate void OnAmmoClipValuesChangedHandler(int ammoInClip, int capacity);
+    public event OnAmmoClipValuesChangedHandler OnAmmoClipValuesChanged;
 
+    public int AmmoInClip
+    {
+        get => ammoInClip;
+        set
+        {
+            if (Template == null)
+            {
+                ammoInClip = value;
+                OnAmmoClipValuesChanged?.Invoke(ammoInClip, -1);
+            }
+            else
+            {
+                ammoInClip = Mathf.Clamp(value, 0, Template.AmmoClipCapacity);
+                OnAmmoClipValuesChanged?.Invoke(ammoInClip, Template.AmmoClipCapacity);
+            }
+        }
+    }
 
     public GunTemplate Template
     {
@@ -22,6 +40,7 @@ public class Gun : MonoBehaviour
         {
             template = value;
             spriteRenderer.sprite = template ? template.Sprite : null;
+            OnAmmoClipValuesChanged?.Invoke(ammoInClip, template ? template.AmmoClipCapacity : -1);
         }
     }
 
@@ -58,10 +77,7 @@ public class Gun : MonoBehaviour
             return;
 
         if (AmmoInClip < Template.ShotPattern.Bullets)
-    	{
-            OnInsufficientAmmo?.Invoke();
-            return;
-        }
+    	    return;
 
         Template.ShotPattern.SpawnBullets(Template.BulletTemplate, GetMuzzlePosition(), this.transform.rotation, Template.AmmoType, DamageLayers);
         AmmoInClip -= Template.ShotPattern.Bullets;
@@ -74,14 +90,6 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void AddAmmo(int value)
-    {
-        if (Template == null)
-            return;
-            
-        AmmoInClip = Mathf.Clamp(AmmoInClip + value, 0, Template.AmmoClipCapacity);
-    }
-
     private Vector3 GetMuzzlePosition()
     {
         Vector2 fixedMuzzleOffset = new Vector2(template.MuzzleOffset.x, template.MuzzleOffset.y * (spriteRenderer.flipY ? -1 : 1));
@@ -92,6 +100,13 @@ public class Gun : MonoBehaviour
     private void FinishCooldown()
     {
         isInCooldown = false;
+
+        if (AmmoInClip < Template.ShotPattern.Bullets)
+        {
+            OnEmptyAmmoClip?.Invoke();
+            return;
+        }
+
         if (isTriggerPressed && Template.AutomaticFiringMode)
             Shoot();
     }

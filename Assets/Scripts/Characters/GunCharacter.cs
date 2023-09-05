@@ -33,6 +33,9 @@ public class GunCharacter : Entity
         }
     }
 
+    public int GetAmmoInCurrentGun => gun != null ? gun.AmmoInClip : 0;
+    public int GetCurrentGunAmmoCapacity => gun != null ? gun.Template.AmmoClipCapacity : 0;
+
     protected virtual void Awake()
     {
         if (spriteRenderer == null)
@@ -49,7 +52,7 @@ public class GunCharacter : Entity
 
         gun.DamageLayers = damageLayers;
 
-        gun.OnInsufficientAmmo += TryToReload;
+        gun.OnEmptyAmmoClip += TryToReload;
     }
 
     protected virtual void UpdateGunRotation(Vector2 direction)
@@ -79,7 +82,7 @@ public class GunCharacter : Entity
     
     protected virtual void TryToReload()
     {
-        if (isReloading)
+        if (isReloading || gun.IsInCooldown)
             return;
 
         if (gun.Template == null)
@@ -135,5 +138,4 @@ public class GunCharacter : Entity
         gun.SetColor(Color.white);
         isReloading = false;
     }
-
 }

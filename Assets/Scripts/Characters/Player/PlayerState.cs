@@ -11,6 +11,10 @@ public class PlayerState : MonoBehaviour
     public delegate void OnAmmoUpdatedHandler(AmmoType type, int value, int maxValue);
     public event OnAmmoUpdatedHandler OnAmmoUpdated;
 
+
+    public delegate void OnUpdatedGunsHandler(GunTemplate currentGun, GunTemplate otherGun);
+    public event OnUpdatedGunsHandler OnUpdatedGuns;
+
     public int SelectedGun
     {
         get => selectedGun;
@@ -20,6 +24,7 @@ public class PlayerState : MonoBehaviour
                 return;
 
             selectedGun = value;
+            OnUpdatedGuns?.Invoke(CurrentGun, GunNotBeingUsed);
         }
     }
 
@@ -65,16 +70,20 @@ public class PlayerState : MonoBehaviour
 
         int index = guns.Count - 1;
         guns[index] = gunTemplate;
+
+        OnUpdatedGuns?.Invoke(CurrentGun, GunNotBeingUsed);
     }
 
     public void ReplaceCurrentGun(GunTemplate gunTemplate)
     {
         guns[SelectedGun] = gunTemplate;
+        OnUpdatedGuns?.Invoke(CurrentGun, GunNotBeingUsed);
     }
 
     public void SwitchGuns()
     {
         SelectedGun = (SelectedGun + 1) % guns.Count;
+        OnUpdatedGuns?.Invoke(CurrentGun, GunNotBeingUsed);
     }
 }
  
