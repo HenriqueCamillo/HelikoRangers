@@ -5,7 +5,7 @@ using System.Linq;
 public class Interactor : MonoBehaviour
 {
     // TODO: Add types of interactions, to be able to distiguish which interactables enemies can interact to
-    private Dictionary<IInteractable, GameObject> possibleinteractables = new Dictionary<IInteractable, GameObject>();
+    private Dictionary<IInteractable, GameObject> possibleInteractables = new Dictionary<IInteractable, GameObject>();
     private List<IInteractable> interactablePriorityQueue = new List<IInteractable>();
 
     private void Update()
@@ -23,19 +23,19 @@ public class Interactor : MonoBehaviour
 
     public void AddPossibleInteractable(IInteractable interactable, GameObject interactableObject)
     {
-        if (possibleinteractables.ContainsKey(interactable))
+        if (possibleInteractables.ContainsKey(interactable))
             return;
 
-        possibleinteractables.Add(interactable, interactableObject);
+        possibleInteractables.Add(interactable, interactableObject);
         UpdateInteractablePriorityQueue(interactable, true);
     }
 
     public void RemovePossibleInteractable(IInteractable interactable)
     {
-        if (!possibleinteractables.ContainsKey(interactable))
+        if (!possibleInteractables.ContainsKey(interactable))
             return;
 
-        possibleinteractables.Remove(interactable);
+        possibleInteractables.Remove(interactable);
         UpdateInteractablePriorityQueue(interactable, false);
     }
 
@@ -50,7 +50,7 @@ public class Interactor : MonoBehaviour
 
         interactablePriorityQueue = interactablePriorityQueue.OrderByDescending(interactable => (
             interactable.GetPriority() * 100000.0f -                      // Priority multiplied by big value so that it will always define the order when values are difference
-            (possibleinteractables[interactable].transform.position - this.transform.position).sqrMagnitude  // Decreases priority according to distance
+            (possibleInteractables[interactable].transform.position - this.transform.position).sqrMagnitude  // Decreases priority according to distance
         )).ToList();
 
         if (activeInteractable != null)
